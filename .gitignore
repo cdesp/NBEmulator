@@ -1,0 +1,7 @@
+*.~dpr
+*.~dsk
+__history/
+*.~inc
+*.~dfm
+*.~pas
+*.dcu
