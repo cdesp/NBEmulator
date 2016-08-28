@@ -1117,7 +1117,11 @@ begin
 //   BinaryFile1.checked:=cop420.FileIsBinary;
    cop420.filename:=Extractfilename(opendialog1.FileName);
    cop420.filename:=ChangeFileExt(cop420.filename,'');
+   delay(1,0);
+   kbuf:='LOAD';
+   nbkeyboard.import(kbuf);
   End;
+
 end;
 
 procedure TfNewBrain.WriteP1(s:String);

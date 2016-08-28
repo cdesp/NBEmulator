@@ -55,6 +55,7 @@ Type
       procedure SetFilename(Value: String);
     procedure CheckReadEOF;
     function FindFileName: string;
+    procedure DoResetTape;
   public
       FileIsBinary: Boolean;
       Loading:Boolean;
@@ -71,6 +72,7 @@ Type
       size:integer;
       comcnt:Integer;
       rom3d:Integer;
+      ResetTape:Boolean;
       procedure CloseComm;
       procedure OpenComm(ToRead:boolean=false);
       function ReadComm: Byte;
@@ -104,6 +106,7 @@ begin
        NBDiscCtrl:=TNBDISCCtrl.create
      else
        NBDiscCtrl:=nil;
+     ResetTape:=false;
 end;
 
 function TCop420.CheckFileEnd: Boolean;
@@ -141,6 +144,25 @@ Begin
 End;
 
 
+procedure TCop420.DoResetTape;
+Begin
+  try
+    Device:=NBTape1;
+    CloseComm;
+    comcnt:=0;
+    size:=0;
+    loading:=false;
+    saving:=false;
+    try
+      closefile(cf);
+    except
+
+    end;
+  finally
+    ResetTape:=false;
+  end;
+End;
+
 function TCop420.CheckReady(addr:Integer): Boolean;
 Var i:Integer;
 begin
@@ -148,6 +170,8 @@ begin
 
   if not Loading and (nbmem.rom[$3b]=$8c)  then
   Begin
+   if ResetTape then
+     DoResetTape;
    Loading:=true;
    Opencomm(true);
    Device:=NBTape1;
@@ -155,6 +179,8 @@ begin
 
   if not saving and (nbmem.rom[$3b]=$88)  then
   Begin
+   if ResetTape then
+     DoResetTape;
    saving:=true;
    bithasset:=false;
    rom3d:=-1;
@@ -367,6 +393,7 @@ Begin
   Begin
    FileName:='NotFound';
    fname:=root+'NotFound'+CurrentExt;
+   ResetTape:=true;
   End;
 
   Commopened:=true;
@@ -417,6 +444,7 @@ Begin
     f:=eof(cf);
    Except
      f:=true;
+     ResetTape:=true;
    End;
 
 

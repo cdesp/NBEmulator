@@ -33,9 +33,9 @@ object fAbout: TfAbout
   object Label3: TLabel
     Left = 120
     Top = 88
-    Width = 265
+    Width = 275
     Height = 20
-    Caption = 'Programming By Despinidis Chris'
+    Caption = 'Programming By Despoinidis Chris'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlue
     Font.Height = -16
@@ -46,9 +46,9 @@ object fAbout: TfAbout
   object Label5: TLabel
     Left = 52
     Top = 124
-    Width = 400
+    Width = 410
     Height = 20
-    Caption = 'Testing && Newbrain Knowledge By Despinidis Nick'
+    Caption = 'Testing && Newbrain Knowledge By Despoinidis Nick'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlue
     Font.Height = -16
