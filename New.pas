@@ -631,7 +631,11 @@ begin
   z80_init_memmap;
   nbmem.Fpath:=root+'\roms\';
   if not nbmem.LoadMem then
-   nbmem.init;
+   nbmem.init
+  else
+    statusbar1.Panels[1].Text:='Ram/Rom Setup from .ini';
+    //todo:print to info panel the loaded rom version
+
  { For j:=0 to $1fff do
    nbmem.Rom[j]:=nbmem.rom[$e000+j];}
   SetParams;        //Add Handlers
