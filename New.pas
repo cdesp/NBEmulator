@@ -132,6 +132,7 @@ type
     ToolButton4: TToolButton;
     ToolButton5: TToolButton;
     ToolButton6: TToolButton;
+    UpdateCheck1: TMenuItem;
     procedure Button1Click(Sender: TObject);
     procedure Start1Click(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word;
@@ -188,6 +189,7 @@ type
     procedure CaptureRawScreen1Click(Sender: TObject);
     procedure SaveMemorytoDisk1Click(Sender: TObject);
     procedure Reset1Click(Sender: TObject);
+    procedure UpdateCheck1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -258,7 +260,7 @@ uses uz80dsm,math, frmNewDebug,jcllogic, frmChrDsgn, frmAbout, frmTapeMgmt,
      uNBMemory,uNBCOP,uNBIO,uNBCPM,uNBScreen,uNBTapes,uNBKeyboard2,
      frmDiskMgmt,mmsystem, frmOptions,shellapi, frmDrvInfo,SendKey,
      frmSplash,frmDisassembly,inifiles, frmRomVersion,ustrings, frmPeriferals,
-     frmInstructions;
+     frmInstructions, uUpdate;
 
 Var dbgsl:TStringlist=nil;
 
@@ -792,6 +794,11 @@ Begin
   End;
   fnewbrain.StatusBar1.Panels[0].Text:=Tapeinfo.GetNextFileName;
 End;
+
+procedure TfNewBrain.UpdateCheck1Click(Sender: TObject);
+begin
+ frmUpdate.show;
+end;
 
 procedure TfNewBrain.FormCreate(Sender: TObject);
 begin

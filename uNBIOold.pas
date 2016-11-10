@@ -29,11 +29,10 @@ NY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 }
-
 unit uNBIO;
 
 interface
-uses upccomms,classes;
+uses upccomms;
 
 {$i 'dsp.inc'}
 
@@ -54,10 +53,6 @@ type
     pn:Integer;
     minpn:Integer;
     lstick:Cardinal;
-    MDloading:boolean;
-    MDsaving:boolean;
-    st:tStream;
-    lsbyte:byte;
     procedure DoPort128Out(Value: Byte);
     procedure DoPort128_DP_Out(Value: Byte);
     procedure DoPort128_MP_Out(Value: Byte);
@@ -100,10 +95,6 @@ type
     function DoPort206In(Value: Byte): Byte;
     procedure DoPort207Out(Value: Byte);
     function DoPort207In(Value: Byte): Byte;
-    function DoPort33In(Value: Byte): Byte;
-    procedure DoPort33Out(Value: Byte);
-    function DoPort44In(Value: Byte): Byte;
-    procedure DoPort44Out(Value: Byte);
 
   public
     UserInt: Boolean;
@@ -147,8 +138,7 @@ begin
      pn:=0;
      minpn:=1;
      lstick:=0;
-     MDloading:=false;
-     MDsaving:=false;
+
 end;
 
 
@@ -229,17 +219,21 @@ begin
 
 end;
 
+
 //DataPack Support
 procedure TNBInOutSupport.DoPort128_DP_Out(Value: Byte);
 var a,v,b,d,h,p:integer;
     pgNo:Integer;
     is8k:Boolean;
 begin
+
   v:= Value and $06;    //only bit 1 and bit 2
   //shift right v by 1
   v:=v SHR 1;
+
   if testbit(Value,3) then //check if it is Ram
    v:=3; //ram in slot 3
+
   ODS('SLOT ='+inttostr(v));
   is8k:=false;
   case v of //v has the rom slot to fetch 4 slots max
@@ -252,7 +246,10 @@ begin
      ;
   end;
   if pgno=0 then exit;
+
+
   is8k:=nbmem.is8k(pgno);
+
   if testbit(Value,7) then //check if itis 8krom
   Begin
     nbMem.SetPageInSlotForce(4,pgno);
@@ -265,6 +262,8 @@ begin
        inc(pgno);
     nbMem.SetPageInSlotForce(3,pgno);
   end;
+
+
 end;
 
 
@@ -276,6 +275,7 @@ function TNBInOutSupport.DoPort204In(Value: Byte): Byte;
 begin
    Result:=$00;
    ODS('Port 204 In =');
+
 end;
 
 procedure TNBInOutSupport.DoPort204Out(Value: Byte);
@@ -295,6 +295,8 @@ begin
 
   Is16K:=TestBit(Value,7);
   v:=Value and 3;//Bit 0 and 1 Only
+
+
   case v  of
      0  :Begin  //EPROM
                //1  ... 0 0  16K EPROM (6/7/8/9)
@@ -336,6 +338,7 @@ function TNBInOutSupport.DoPort205In(Value: Byte): Byte;
 begin
    Result:=$00;
    ODS('Port 205 In =');
+
 end;
 
 procedure TNBInOutSupport.DoPort205Out(Value: Byte);
@@ -345,8 +348,9 @@ end;
 
 function TNBInOutSupport.DoPort206In(Value: Byte): Byte;
 begin
-   Result:=$00;
+      Result:=$00;
    ODS('Port 206 In =');
+
 end;
 
 procedure TNBInOutSupport.DoPort206Out(Value: Byte);
@@ -358,6 +362,7 @@ function TNBInOutSupport.DoPort207In(Value: Byte): Byte;
 begin
    Result:=$00;
    ODS('Port 207 In =');
+
 end;
 
 procedure TNBInOutSupport.DoPort207Out(Value: Byte);
@@ -366,6 +371,7 @@ begin
 end;
 
 //PIBOX Support End
+
 
 //Read COP Status
 function TNBInOutSupport.DoPort20In(Value: Byte): byte;
@@ -433,7 +439,7 @@ Begin
   if not TestBit(EnableReg,5) and //bit 5 not set
      not TestBit(EnableReg,4) //bit 4 not set
   then       //PwrUp For battery version
-     ;//result:=result or 2; // NOT set = Power is supplied
+    ;// result:=result or 2; // NOT set = Power is supplied
 
    EnableReg:=ClearBit(EnableReg,5);
    EnableReg:=ClearBit(EnableReg,4);
@@ -463,9 +469,8 @@ Begin
 
   if not copint then
     result:=result or 128; //cop int if not set
-  
 
- //  ENABLEREG:=TMP;
+
  // Result:=SetBit(result,0);   //Always bit 0 is 1
  // Result:=ClearBit(result,1); //Always bit 1 is 0 we dont have a battery
 
@@ -497,8 +502,8 @@ Begin
  ODS(inttostr(DE));
  Value:=Enablereg;
 
- result:=result or 2;  //not CTS mean not ready   0 = ready
- result:=result or 128;  //not CTS prn
+ result:=result or 2;
+ result:=result or 128;
 
  if dmCommd.recv then
  begin
@@ -512,7 +517,7 @@ Begin
   if COP420.Loading then
    Result := result or $20;  //set bit 5
 
- if  TestBit(Value,4) and TestBit(Value,5) and ((DE=544) OR (PC=58630)) then   //port #9
+ if  TestBit(Value,4) and TestBit(Value,5) and ((DE=544) OR (PC=58630)) then //port #9
  Begin
   result:= result - 2 ;  //UnSet Bit 1
   lastDevice:=pcpCom1;
@@ -642,6 +647,8 @@ Begin
   //print#16,nn
   //We must Resend them to the Selected printer Device
   dmCommd.PrinterSend(Value);
+
+
 End;
 
 //Ch0 CTC
@@ -694,6 +701,7 @@ Begin
 //   if alt then
 //        s:='Alt';
 //    ODS('Slot:'+inttostr(slt)+' page:'+inttostr(pg)+' '+s);
+
 End;
 
 //Ch2 CTC
@@ -786,11 +794,15 @@ Begin
  // fnewbrain.statusbar1.panels[2].text:='';
 
   if CheckKeyboard(Result) then exit;
+
+
    //bit 0 = timer0
-   //bit 1 = power low
-   //bit 2 = Brk
-   //bit 3 = resp
-   //bits 0-2 goes to Copst
+                       //bit 1 = power low
+                       //bit 2 = Brk
+                       //bit 3 = resp
+ //bits 0-2 goes to Copst
+
+
   if cop420.Loading then
    result:=result or 48;
   if cop420.Saving then
@@ -844,6 +856,7 @@ Begin
    end;
    if value<>$0d0 then
     ods(s);
+
 End;
 
 procedure TNBInOutSupport.DoPort7Out(Value: Byte);
@@ -926,6 +939,7 @@ Begin
   ODS2('IX='+Inttostr( z80_get_reg(Z80_REG_IX)));
   ODS2('IY='+Inttostr( z80_get_reg(Z80_REG_IY)));
   ODS2('BC2='+Inttostr( z80_get_reg(Z80_REG_BC2)));
+
 End;
 
 function TNBInOutSupport.DoPort8In(Value: Byte): Byte; //Sets 9th bit of video address counter
@@ -949,7 +963,9 @@ End;
 procedure TNBInOutSupport.DoPort9Out(Value:Byte);
 Var GrPage:Integer;
 Begin
+
   nbscreen.VideoAddrReg:=Value shl 7;   //on a 64 byte boundary so shl 7
+ 
   try
   //todo:This is not a good way to find the device 33 video ram page
    if nbmem.mainslots[3]^.Page=124 then
@@ -966,6 +982,7 @@ Begin
    if pn=1 then
     Nbscreen.Paintvideo;
   Except
+
   End;
   nbscreen.VIDEOMSB:=0;
   if not FNEWBRAIN.thrEmulate.Enabled then
@@ -977,12 +994,13 @@ Begin
   //FRAME SKIPPING CODE TO GO FASTER
   if pn>maxpn then pn:=0;
 
-  if (pn=1) and (Gettickcount-lstick>500) then
+  if (pn=1) and (Gettickcount-lstick>1500) then
   Begin
    lstick:=Gettickcount;
    if nbscreen.Lastfps>25 then
     if nbdel<5 then
      inc(maxpn);//faster
+
    if nbscreen.Lastfps<10 then
     dec(maxpn);//slower
   End;
@@ -1010,107 +1028,10 @@ Begin
  nbscreen.TVModeReg:=Value;
 End;
 
-// Testing for NB Laptop
-var dirsending:boolean=false;
-var dirlist:TStringlist=nil;
-var dirlin,dirch:integer;
-var dirret:integer=255;
-var selectedfile:string;
-
-function TNBInOutSupport.DoPort33In(Value: Byte): Byte; //MY DEV DRIVER
-var b:byte;
-Begin
- b:=0;
- if not MDloading then
- begin
-   MDloading:=true;
-   st:=TFileStream.Create('.\discs\games2\'+selectedfile,
-                  fmOpenRead);
- end;
- if st.Position<st.Size then
-   st.Read(b,1);
-
- if ((lsbyte=4) and (b=13)) or (st.position=st.size) then
-  Begin st.Free;st:=nil;MDloading:=false;end;
- lsbyte:=b;
- result:=b;
-End;
-
-procedure TNBInOutSupport.DoPort33Out(Value:Byte);   //MY DEV DRIVER
-Begin
-  if not MDsaving then
-  Begin
-    MDsaving:=true;
-    st:=TFileStream.Create('.\discs\games2\test2.bas',
-                  fmCreate or fmOpenWrite);
-  End;
-  st.Write(value,1);
-End;
-
-//Send the directory files byte by byte
-function TNBInOutSupport.DoPort44In(Value: Byte): Byte; //MY DEV DRIVER
-var b:byte;
-    s:string;
-Begin
- if dirret<>255 then
- Begin
-   result:=dirret;
-   dirret:=255;
-   exit;
- End;
-
- if dirlist=nil then dirlist:=tstringlist.Create;
-
- b:=0;
- if not dirsending then
- begin
-   dirsending:=true;
-   dirlist:=Tstringlist(new.GetFiles('\Discs\games2\*.*',false));
-   dirlin:=0;dirch:=1;
- end;
-
- while dirch>length(dirlist[dirlin]) do
-  Begin
-    if dirlin<dirlist.count-1 then
-    Begin
-     dirlin:=dirlin+1;
-     dirch:=1;
-     result:=13;
-     exit;
-    End
-    else //end the dir
-    Begin
-      Result:=0;
-      dirsending:=false;
-      exit;
-    End;
- end;
-
- s:=dirlist[dirlin];
- result:=byte(s[dirch]);
- dirch:=dirch+1;
-End;
-
-//Select a file in the default directory
-procedure TNBInOutSupport.DoPort44Out(Value:Byte);   //MY DEV DRIVER
-Begin
-   if value=0 then
-   Begin
-     if dirlist=nil then dirlist:=tstringlist.Create;
-     dirlist:=Tstringlist(new.GetFiles('\Discs\games2\*.*',false));
-     if dirlist.indexof(selectedfile)>0 then
-        dirret:=0
-     else
-        dirret:=250; //Error file not found
-   End;
-  if value=134 then
-   selectedfile:=''
-  else
-   selectedfile:=selectedfile+char(value);
-End;
 
 function TNBInOutSupport.GetClock: LongWord;
 begin
+
   Result := GetTickCount;
 end;
 
@@ -1133,8 +1054,6 @@ begin
      23:result:=DoPort23In(Port);
      24:result:=DoPort24In(Port);
      25:result:=DoPort25In(Port);
-     33:result:=DoPort33In(Port);
-     44:result:=DoPort44In(Port);
      204:result:=DoPort204In(Port);
      205:result:=DoPort205In(Port);
      206:result:=DoPort206In(Port);
@@ -1154,21 +1073,19 @@ begin
     4:DoPort4Out(value);
     5:DoPort5Out(Value);
     6:DoPort6Out(value);//cop interrupt
-    7:DoPort7Out(value);    //enreg
-    8:DoPort8Out(value);    //printer
-    9:DoPort9Out(value);    //v24 rs232
+    7:DoPort7Out(value);
+    8:DoPort8Out(value);
+    9:DoPort9Out(value);
     12:DoPort12Out(value);
     23:DoPort23Out(Value);
     24:DoPort24Out(Value);
     25:DoPort25Out(Value);
-    33:DoPort33Out(Value);//MY TEST DRIVER
-    44:DoPort44Out(Value);//select files and dir
     128:DoPort128Out(Value);
     204:DoPort204Out(Value);
     205:DoPort205Out(Value);
     206:DoPort206Out(Value);
     207:DoPort207Out(Value);
-    255:DoPort255Out(value); //Paging
+    255:DoPort255Out(value);
    Else
      ODS('--Out Lost--'+inttostr(port));
   End;
@@ -1181,6 +1098,7 @@ begin
           FClockInt := Value;
           if not value then
                lastRGclk:=getclock;
+
      end;
 end;
 

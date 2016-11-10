@@ -56,7 +56,8 @@ uses
   frmPeriferals in 'frmPeriferals.pas' {frmPerif},
   frmInstructions in 'frmInstructions.pas' {fInstructions},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  uUpdate in 'uUpdate.pas' {frmUpdate};
 
 {$R *.RES}
 
@@ -74,5 +75,6 @@ begin
   Application.CreateForm(TfDrvInfo, fDrvInfo);
   Application.CreateForm(TfrmPerif, frmPerif);
   Application.CreateForm(Tfsplash, fsplash);
+  Application.CreateForm(TfrmUpdate, frmUpdate);
   Application.Run;
 end.
