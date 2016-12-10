@@ -40,7 +40,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   raze, StdCtrls,  Menus, AppEvnts, DXDraws, DXClass, ExtCtrls,
    ComCtrls,  JDLed,uNBTypes, Vcl.ToolWin, Vcl.ImgList, System.Actions,
-  Vcl.ActnList{, JvRegAuto}
+  Vcl.ActnList, Vcl.Imaging.jpeg, Vcl.Imaging.pngimage{, JvRegAuto}
   ;
 {$i 'dsp.inc'}
 type
@@ -68,11 +68,8 @@ type
     Tools1: TMenuItem;
     N6: TMenuItem;
     About1: TMenuItem;
-    Panel1: TPanel;
-    LedDisp: TJDLed;
     TapeManagement1: TMenuItem;
     ApplicationEvents1: TApplicationEvents;
-    newscr: TDXDraw;
     WithExpansion1: TMenuItem;
     WithCPM1: TMenuItem;
     DiskManagement1: TMenuItem;
@@ -111,7 +108,6 @@ type
     N1: TMenuItem;
     N10: TMenuItem;
     Reset1: TMenuItem;
-    Panel2: TPanel;
     aclist: TActionList;
     acStEmul: TAction;
     acRomSel: TAction;
@@ -122,6 +118,13 @@ type
     acTapeManagement: TAction;
     acDiskManagement: TAction;
     Action1: TAction;
+    UpdateCheck1: TMenuItem;
+    Panel4: TPanel;
+    Panel3: TPanel;
+    Panel1: TPanel;
+    LedDisp: TJDLed;
+    Panel5: TPanel;
+    Panel2: TPanel;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -132,7 +135,9 @@ type
     ToolButton4: TToolButton;
     ToolButton5: TToolButton;
     ToolButton6: TToolButton;
-    UpdateCheck1: TMenuItem;
+    Image1: TImage;
+    Panel6: TPanel;
+    newscr: TDXDraw;
     procedure Button1Click(Sender: TObject);
     procedure Start1Click(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word;
@@ -635,7 +640,7 @@ begin
   if not nbmem.LoadMem then
    nbmem.init
   else
-    statusbar1.Panels[1].Text:='Ram/Rom Setup from .ini';
+    WriteP1('Ram/Rom Setup from .ini');
     //todo:print to info panel the loaded rom version
 
  { For j:=0 to $1fff do
@@ -1525,12 +1530,15 @@ end;
 procedure TfNewBrain.FormActivate(Sender: TObject);
 begin
    OnActivate:=nil;
-   ShowSplash;
+//   ShowSplash(True);
    LoadOptions;
    RefreshRomVer;
-   Delay(1,500);
-   ShowSplash(False);
+//   Delay(1,500);
+//   ShowSplash(False);
    ShowInstructions1Click(nil);
+   if frmupdate.CheckVersion then
+     WriteP2('New Version exist!!! Please update.');
+
 end;
 
 procedure TfNewBrain.KeyboardMapping1Click(Sender: TObject);

@@ -63,7 +63,6 @@ uses
 
 begin
   Application.Initialize;
-  TStyleManager.TrySetStyle('Obsidian');
   Application.Title := 'NewBrain Emulator';
   Application.CreateForm(TfNewBrain, fNewBrain);
   Application.CreateForm(TdmCommd, dmCommd);

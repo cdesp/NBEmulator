@@ -1,3 +1,34 @@
+{
+Grundy NewBrain Emulator Pro Made by Despsoft
+
+Copyright (c) 2004, Despoinidis Chris
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation and/or
+other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors
+may be used to endorse or promote products derived from this software without
+specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON A
+NY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+}
 unit uUpdate;
 
 interface
@@ -21,11 +52,12 @@ type
   private
     newupdate:boolean;
     procedure ConnectToSite;
-    procedure CheckVersion;
+
     procedure DownloadUpdate;
     { Private declarations }
   public
     { Public declarations }
+    function CheckVersion:boolean;
   end;
 
 var
@@ -105,25 +137,28 @@ begin
  button1click(nil);
 end;
 
-procedure TfrmUpdate.CheckVersion;
+function TfrmUpdate.CheckVersion:boolean;
 Var Newver,Curver:String;
 Begin
+  result:=false;
+  ConnectToSite;
+  if listbox1.Items.Count=0 then exit;
   Newver:=listbox1.Items.Values['latest'];
   Listbox1.Clear;
   Curver:=StringReplace(copy(fNewbrain.Leddisp.Text,8,maxint),' ','',[rfReplaceall]);
   listbox1.Items.Add('New Version='+Newver);
   listbox1.Items.Add('Cur Version='+Curver);
   application.ProcessMessages;
-  if newver<>curver then
-    DownloadUpdate;
+  result:=newver<>curver;
 End;
 
 procedure TfrmUpdate.Button1Click(Sender: TObject);
 Var fn:String;
 begin
- ConnectToSite;
- if listbox1.Items.Count>0 then
-  CheckVersion;
+// ConnectToSite;
+// if listbox1.Items.Count>0 then
+  if CheckVersion then
+    DownloadUpdate;
  if newupdate then
  Begin
    Showmessage('A new version has been downloaded.'#13#10'Click OK to Update and Restart the emulator.');

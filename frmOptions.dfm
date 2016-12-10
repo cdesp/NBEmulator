@@ -3,7 +3,7 @@ object foptions: Tfoptions
   Top = 127
   BorderIcons = [biSystemMenu]
   Caption = 'Newbrain Options'
-  ClientHeight = 418
+  ClientHeight = 429
   ClientWidth = 589
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,9 +21,10 @@ object foptions: Tfoptions
     Left = 0
     Top = 0
     Width = 589
-    Height = 377
+    Height = 388
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 377
     object ComGroup: TRadioGroup
       Left = 16
       Top = 24
@@ -250,28 +251,43 @@ object foptions: Tfoptions
     end
     object GroupBox4: TGroupBox
       Left = 16
-      Top = 274
+      Top = 332
       Width = 185
-      Height = 88
+      Height = 39
       Caption = 'Keyboard'
       TabOrder = 7
       object cbEnglish: TCheckBox
         Left = 16
-        Top = 24
+        Top = 19
         Width = 121
         Height = 17
         Caption = 'English Keyboard'
         TabOrder = 0
       end
     end
+    object rgFlow: TRadioGroup
+      Left = 16
+      Top = 268
+      Width = 185
+      Height = 58
+      Caption = 'Flow Control'
+      Columns = 2
+      ItemIndex = 2
+      Items.Strings = (
+        'CTS'
+        'DSR'
+        'None')
+      TabOrder = 8
+    end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 377
+    Top = 388
     Width = 589
     Height = 41
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 377
     object Button1: TButton
       Left = 40
       Top = 8

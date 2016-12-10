@@ -70,6 +70,7 @@ type
     Back: TColorBox;
     GroupBox4: TGroupBox;
     cbEnglish: TCheckBox;
+    rgFlow: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -117,6 +118,7 @@ begin
    Parity.itemindex:=inif.ReadInteger('ComPorts','Parity',Parity.itemindex);
    edstop.text:=inif.ReadString('ComPorts','Stop',edstop.text);
    edDataB.text:=inif.ReadString('ComPorts','DataBits',edDataB.text);
+   rgFlow.ItemIndex:=inif.ReadInteger('ComPorts','FlowControl',rgFlow.itemindex);
 
    PrnGroup.itemindex:=inif.ReadInteger('Printer','Printer',PrnGroup.itemindex);
 
@@ -148,6 +150,7 @@ begin
    inif.WriteInteger('ComPorts','Parity',Parity.itemindex);
    inif.WriteString('ComPorts','Stop',edstop.text);
    inif.WriteString('ComPorts','DataBits',edDataB.text);
+   inif.WriteInteger('ComPorts','FlowControl',rgFlow.itemindex);
 
    inif.WriteInteger('Printer','Printer',PrnGroup.itemindex);
 

@@ -4,9 +4,9 @@ object fNewBrain: TfNewBrain
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'NEWBRAIN Pro By Despsoft'
-  ClientHeight = 608
-  ClientWidth = 643
-  Color = clNone
+  ClientHeight = 631
+  ClientWidth = 668
+  Color = 764381
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -175,8 +175,8 @@ object fNewBrain: TfNewBrain
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 589
-    Width = 643
+    Top = 612
+    Width = 668
     Height = 19
     Panels = <
       item
@@ -198,128 +198,250 @@ object fNewBrain: TfNewBrain
         Width = 50
       end>
     SizeGrip = False
+    ExplicitTop = 589
+    ExplicitWidth = 643
   end
-  object Panel1: TPanel
-    Left = 0
-    Top = 39
-    Width = 643
-    Height = 36
-    Align = alTop
-    BevelOuter = bvLowered
-    Color = clBlack
-    TabOrder = 1
-    object LedDisp: TJDLed
-      Left = 0
-      Top = 6
-      Width = 371
-      Height = 25
-      Thick = 2
-      Colour = 4259648
-      Text = 'VERSION 2.64 FN1'
-      Len = 16
-      LedWidth = 20
-      BackColor = clBlack
-      Gap = 3
-      DimColor = 16384
-    end
-  end
-  object newscr: TDXDraw
-    Left = 0
-    Top = 75
-    Width = 643
-    Height = 514
-    AutoInitialize = True
-    AutoSize = True
-    Color = clBlack
-    Display.BitCount = 24
-    Display.FixedBitCount = False
-    Display.FixedRatio = False
-    Display.FixedSize = False
-    Display.Height = 600
-    Display.Width = 800
-    Options = [doFlip, do3D, doDirectX7Mode, doHardware, doSelectDriver]
-    SurfaceHeight = 514
-    SurfaceWidth = 643
-    Align = alClient
-    TabOrder = 2
-    Traces = <>
-    OnKeyDown = FormKeyDown
-    OnKeyUp = FormKeyUp
-  end
-  object Panel2: TPanel
+  object Panel4: TPanel
     Left = 0
     Top = 0
-    Width = 643
-    Height = 39
+    Width = 668
+    Height = 83
     Align = alTop
-    Caption = 'Panel2'
-    TabOrder = 3
-    object ToolBar1: TToolBar
-      Left = 1
-      Top = 1
-      Width = 641
-      Height = 37
+    BevelOuter = bvNone
+    TabOrder = 1
+    ExplicitWidth = 643
+    object Panel3: TPanel
+      Left = 251
+      Top = 40
+      Width = 417
+      Height = 43
       Align = alClient
-      AutoSize = True
-      ButtonHeight = 38
-      ButtonWidth = 39
-      Caption = 'ToolBar1'
-      Images = ImageList1
-      ParentShowHint = False
-      ShowHint = True
+      BevelOuter = bvNone
+      Caption = 'Panel3'
       TabOrder = 0
-      object ToolButton1: TToolButton
+      ExplicitLeft = 1
+      ExplicitTop = -53
+      ExplicitWidth = 641
+      ExplicitHeight = 94
+      object Panel1: TPanel
         Left = 0
         Top = 0
-        Action = acStEmul
+        Width = 417
+        Height = 43
+        Align = alClient
+        BevelOuter = bvLowered
+        Color = 64
+        ParentBackground = False
+        TabOrder = 0
+        ExplicitLeft = 2
+        ExplicitTop = 58
+        ExplicitWidth = 641
+        ExplicitHeight = 36
+        object LedDisp: TJDLed
+          Left = 20
+          Top = 9
+          Width = 371
+          Height = 25
+          Thick = 2
+          Colour = 4259648
+          Text = 'VERSION 2.65 B2'
+          Len = 16
+          LedWidth = 20
+          BackColor = clBlack
+          Gap = 3
+          DimColor = 16384
+        end
+      end
+    end
+    object Panel5: TPanel
+      Left = 0
+      Top = 40
+      Width = 251
+      Height = 43
+      Align = alLeft
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitLeft = 1
+      ExplicitTop = 41
+      ExplicitHeight = 47
+      object Image1: TImage
+        Left = 0
+        Top = 0
+        Width = 251
+        Height = 43
+        Align = alClient
         AutoSize = True
+        Center = True
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D494844520000012C0000
+          003E08060000009114265100000006624B474400FF00FF00FFA0BDA793000000
+          097048597300000B1300000B1301009A9C180000000774494D4507E00C0A0A0D
+          3A0EE89E6E0000057B4944415478DAED9DDB7114311045710CFC120E31380402
+          20107EA92204E7460C80AB7095A176675BDDF7F643BAE7D75E493D239DD1E835
+          4F2F2F2F1F841062024F129610620A129610620C129610620C129638829F3FBE
+          FEBAF7B78F5FBE3D55974FD890B02E787E7EFEF5E7FAB82BF36B235163A8E34A
+          52B7D0BDEACFF1C2623E79DFD2564388E1B98EABB27A43F7AA37470BEB51A58E
+          54DEFFD3564358C7730DBDA25ACD47D470ACB02C155BC2AAE1DEBD79740D11B2
+          B2E6256A90B0EE80941522CD13F0BE9E234565C94FD471A4B0B27B57883477C7
+          FB005991D5FB34980F2CC1E33861592BB8B7C2AA21F8F0F4AEBCB28AE4296A91
+          B06EC0E85D21D2DE995579A01E3CEA0DCFE2286155F7AE2269EF4C95ACAED2D2
+          7DEAC931C262CBCA92871AC16D568485BE8F12D62C24ACFF50EF2A9715C933AE
+          F129C27A1FE7E4D88E105674701691FEE44AC2C4DABBCA949527ADAEEC16E3F6
+          C262CBCA9AC7C4CA9181A541B1AEEF6E8D7925BEA9714A58EF50EF2A974A5959
+          F39F4AC683BA82AD8595B15B5FC2F2F3481892951F096B1892556FAA37294B58
+          33E395B0FEC210D6A48A904D545892953FC6C9316F292C4F6340CE3079D33C89
+          88B0B4562E1EE7D498B7135686AC2CF94CAA04D948567C24AC21A877D59F8AD3
+          404FBC673BC6BC95B0321AC28E952093AAA38B4FEA5D59639F18F336C2CA6A08
+          12568CAC57F695FC74BFE6B085B0B2C64454F963485622CA7861654D8FABF2C7
+          412C35B17C4127E3640E51C3F6C27AB4625AC2CA0129AB7BFF1B9919BBF55BDD
+          CF7E8C16965522D14147C92A0E629A1DF5B109EB195BBAA7FD182BACA8ACDEFE
+          8ECA2792C6EE0D43B21228460A6B452295C2422EDE5BF9CE61A411325E8DA263
+          4ACC7D87DDB7E948A8FFB2A5B0AC07BF213ECC193973FC515AC8B3CE23B1B267
+          EABC3145D245A56DC9C7026AEF2B63BC76252FB648C7096B5522CCAF08A31B58
+          F4BB799D3E441A891D59AECCB8196BFA56F261DC7FCF7D614A6B94B03C12C912
+          16BA71A1BFD397D5CB88C68D2E5F376155C583F85D87FD8963848594D5ADFF8D
+          E485ACF8DEB1B71D6565A1A227EC8DA3E3581C4356D6EBE16184B0BC83B6AC46
+          1CFD3842F4686084B076909535966A61B16638AD79447F97BD43E18AF6C28ACC
+          30ADBE0EA265B59A4F646693F16D3F26E80A8D8A1F717FAD79A1AE097B62C983
+          847581570CD17C5862610F82560B8B51991133C7A821056B9950D7A3DB64CBB1
+          83EED1459B4C615575C1A78F5FB12A335A581D161CA3E3F694F15E7A55EBD7DA
+          0A8BB9D8D0D3E360CEE059D3CF9C1D9CF6510E743CE8C5B796343C7966F6AE90
+          42F7D2525888AE34F38BC2E8B1B1ECE50CBBC90A1DD314593DCA0F252CF4AB72
+          8476C242BDF7B33ED25939BE84920FBAC27538CE05252CE60076F5824F6B391F
+          A52361192FC67B32663F22338F194B313AC8CA1A2BBB22B367F498BFEFDABBEA
+          26AB575A090BF9A4AE14166BC33473FDD75599AEE8D0BB42C556B11793251D09
+          8B0CBAE2338E4D66BD66AEE6E1C9676759A1E2638D5D9DD0BBB25EA7282D84C5
+          A8F8D9C28AA66DC9E3D1F95EF7F26255B40EAF82A872B05E0727F6AE3A1FC553
+          2E2CD6539AB19D802141641ECC7279CB5939D0BE52865D5E0759B28A5E2314A5
+          C29A242B66BAD13CBC74921533EE8EC262F5922A7A669987093E7DFFFCA97C5F
+          D915CCB195D53C3276AC67094BB2B297012D2CE60913A87DB2ABBF4FEB619D2E
+          ACCE3D2016192763767905EE528EEE546D925EA5B5B03AF50256D3CEC073FC47
+          2759AD96DD7B7DAACBD19D29B27AA5ADB0D80D2BA3E132C95863E589B98B244E
+          EC397B91B082B01B57C62E7926D90BFA183DB84EB2CA28D35539BBD5A5EAEB72
+          453B6131659279681C8B9581D1AC133D57F3EA28AB8CB2DD2BE784A37EBA48AB
+          7C1D96E80D4B82427890B084106390B084106390B084106390B084106390B084
+          1063F80D2DEE550461AF85F60000000049454E44AE426082}
+        Proportional = True
+        Transparent = True
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitWidth = 300
+        ExplicitHeight = 62
       end
-      object ToolButton2: TToolButton
-        Left = 39
-        Top = 0
-        Action = acReset
+    end
+    object Panel2: TPanel
+      Left = 0
+      Top = 0
+      Width = 668
+      Height = 40
+      Align = alTop
+      TabOrder = 2
+      ExplicitLeft = 2
+      ExplicitTop = 9
+      ExplicitWidth = 641
+      object ToolBar1: TToolBar
+        Left = 1
+        Top = 1
+        Width = 666
+        Height = 38
+        Align = alClient
+        AutoSize = True
+        ButtonHeight = 38
+        ButtonWidth = 39
+        Caption = 'ToolBar1'
+        Images = ImageList1
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        ExplicitWidth = 639
+        object ToolButton1: TToolButton
+          Left = 0
+          Top = 0
+          Action = acStEmul
+          AutoSize = True
+        end
+        object ToolButton2: TToolButton
+          Left = 39
+          Top = 0
+          Action = acReset
+        end
+        object ToolButton7: TToolButton
+          Left = 78
+          Top = 0
+          Width = 8
+          Caption = 'ToolButton7'
+          ImageIndex = 6
+          Style = tbsSeparator
+        end
+        object ToolButton3: TToolButton
+          Left = 86
+          Top = 0
+          Action = acGenOptions
+        end
+        object ToolButton9: TToolButton
+          Left = 125
+          Top = 0
+          Action = acRomSel
+        end
+        object ToolButton8: TToolButton
+          Left = 164
+          Top = 0
+          Width = 8
+          Caption = 'ToolButton8'
+          ImageIndex = 6
+          Style = tbsSeparator
+        end
+        object ToolButton4: TToolButton
+          Left = 172
+          Top = 0
+          Action = acTapeSelect
+        end
+        object ToolButton5: TToolButton
+          Left = 211
+          Top = 0
+          Action = acTapeManagement
+        end
+        object ToolButton6: TToolButton
+          Left = 250
+          Top = 0
+          Action = acDiskManagement
+        end
       end
-      object ToolButton7: TToolButton
-        Left = 78
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton7'
-        ImageIndex = 6
-        Style = tbsSeparator
-      end
-      object ToolButton3: TToolButton
-        Left = 86
-        Top = 0
-        Action = acGenOptions
-      end
-      object ToolButton9: TToolButton
-        Left = 125
-        Top = 0
-        Action = acRomSel
-      end
-      object ToolButton8: TToolButton
-        Left = 164
-        Top = 0
-        Width = 8
-        Caption = 'ToolButton8'
-        ImageIndex = 6
-        Style = tbsSeparator
-      end
-      object ToolButton4: TToolButton
-        Left = 172
-        Top = 0
-        Action = acTapeSelect
-      end
-      object ToolButton5: TToolButton
-        Left = 211
-        Top = 0
-        Action = acTapeManagement
-      end
-      object ToolButton6: TToolButton
-        Left = 250
-        Top = 0
-        Action = acDiskManagement
-      end
+    end
+  end
+  object Panel6: TPanel
+    Left = 0
+    Top = 83
+    Width = 668
+    Height = 529
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 2
+    ExplicitLeft = 232
+    ExplicitTop = 312
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object newscr: TDXDraw
+      Left = 14
+      Top = 12
+      Width = 641
+      Height = 504
+      AutoInitialize = True
+      AutoSize = False
+      Color = clBlack
+      Display.BitCount = 24
+      Display.FixedBitCount = False
+      Display.FixedRatio = False
+      Display.FixedSize = False
+      Display.Height = 600
+      Display.Width = 800
+      Options = [doFlip, do3D, doDirectX7Mode, doHardware, doSelectDriver]
+      SurfaceHeight = 504
+      SurfaceWidth = 641
+      TabOrder = 0
+      Traces = <>
+      OnKeyDown = FormKeyDown
+      OnKeyUp = FormKeyUp
     end
   end
   object MainMenu1: TMainMenu
@@ -644,7 +766,7 @@ object fNewBrain: TfNewBrain
     Left = 240
     Top = 112
     Bitmap = {
-      494C010107000800880020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C0101070008008C0020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

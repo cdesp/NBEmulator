@@ -932,10 +932,10 @@ var x,y,nender:Integer;
     Procedure CheckScreen;
 
     Begin
-     Fnewbrain.ClientWidth:=HorzMult*LL*8    +ScreenXOffset*2;
-     FormOffst:=fnewbrain.panel1.Height+fnewbrain.panel2.Height+fnewbrain.StatusBar1.Height;  //48;// = led+Statusbar+4 bytes =25+19+4
+     Fnewbrain.ClientWidth:=2*(fnewbrain.newscr.Left-fnewbrain.Panel6.Left)+ HorzMult*LL*8    ;//+ScreenXOffset*2;
+     FormOffst:= fnewbrain.panel1.Height+fnewbrain.panel2.Height+fnewbrain.StatusBar1.Height;  //48;// = led+Statusbar+4 bytes =25+19+4
      EMUScrheight:=520; //should never change cause in 8x8 we show 30 lines not 25
-     fnewbrain.clientheight:=FormOffst+250*2+ScreenYOffset*2;//4 bytes around the real screen
+     fnewbrain.clientheight:=2*(fnewbrain.newscr.top)+FormOffst+250*2+8;//+ScreenYOffset*2;//4 bytes around the real screen
     End;
 
 

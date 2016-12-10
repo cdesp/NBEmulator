@@ -177,6 +177,18 @@ begin
                   pccom.DataBits:=8;
              end;
 
+             case foptions.rgFlow.ItemIndex of
+               0:Begin    //RTS/CTS
+                   pccom.HWFlowOptions:=[hwfUseRTS,hwfRequireCTS];
+                 End;
+               1:Begin    //DTR/DSR
+                   pccom.HWFlowOptions:=[hwfUseDTR,hwfRequireDSR];
+                 End;
+               2:Begin    //None
+                   pccom.HWFlowOptions:=[];
+                 End;
+             end;
+
              if foptions.chkEnabled.Checked then
              Begin
                pccom.DeviceLayer:=dlWinsock;
