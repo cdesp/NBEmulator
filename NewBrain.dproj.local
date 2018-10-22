@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2007/03/23 19:24:29.125.dfm,H:\_Programming\Emulation\Delphi\Unit1.dfm=H:\_Programming\Emulation\Delphi\frmDisassembly.dfm</Transaction>
     <Transaction>2007/03/23 19:24:29.125.pas,H:\_Programming\Emulation\Delphi\Unit1.pas=H:\_Programming\Emulation\Delphi\frmDisassembly.pas</Transaction>
-    <Transaction>2007/03/23 22:42:33.515.pas,H:\_Programming\Emulation\Delphi\uz80dsm.pas=</Transaction>
+    <Transaction>2007/03/23 19:24:29.125.dfm,H:\_Programming\Emulation\Delphi\Unit1.dfm=H:\_Programming\Emulation\Delphi\frmDisassembly.dfm</Transaction>
     <Transaction>2007/03/23 22:42:33.515.dfm,H:\_Programming\Emulation\Delphi\uz80dsm.dfm=</Transaction>
+    <Transaction>2007/03/23 22:42:33.515.pas,H:\_Programming\Emulation\Delphi\uz80dsm.pas=</Transaction>
     <Transaction>2007/08/13 13:14:06.140.pas,H:\_Programming\Emulation\Delphi\Unit1.pas=H:\_Programming\Emulation\Delphi\uNBIO.pas</Transaction>
     <Transaction>2007/08/13 13:14:52.359.pas,H:\_Programming\Emulation\Delphi\Unit1.pas=H:\_Programming\Emulation\Delphi\uNBCPM.pas</Transaction>
     <Transaction>2007/08/13 14:14:13.484.dfm,H:\_Programming\Emulation\Delphi\Unit1.dfm=H:\_Programming\Emulation\Delphi\frmRomVersion.dfm</Transaction>
@@ -18,8 +18,8 @@
     <Transaction>2008/08/05 22:02:34.546.pas,H:\_Programming\Emulation\Delphi\Unit1.pas=H:\_Programming\Emulation\Delphi\uAsmPrj.pas</Transaction>
     <Transaction>2008/09/05 21:23:46.610.dfm,H:\_Programming\Emulation\Delphi\Unit1.dfm=H:\_Programming\Emulation\Delphi\frmPeriferals.dfm</Transaction>
     <Transaction>2008/09/05 21:23:46.610.pas,H:\_Programming\Emulation\Delphi\Unit1.pas=H:\_Programming\Emulation\Delphi\frmPeriferals.pas</Transaction>
-    <Transaction>2008/11/15 15:21:35.578.dfm,H:\_Programming\Emulation\Delphi\Unit1.dfm=H:\_Programming\Emulation\Delphi\frmInstructions.dfm</Transaction>
     <Transaction>2008/11/15 15:21:35.578.pas,H:\_Programming\Emulation\Delphi\Unit1.pas=H:\_Programming\Emulation\Delphi\frmInstructions.pas</Transaction>
+    <Transaction>2008/11/15 15:21:35.578.dfm,H:\_Programming\Emulation\Delphi\Unit1.dfm=H:\_Programming\Emulation\Delphi\frmInstructions.dfm</Transaction>
     <Transaction>2014/07/05 11:53:18.000.570,=G:\_Programming\NB Emulator\Emulation\Delphi\NBrain.ico</Transaction>
     <Transaction>2016/11/10 10:41:45.000.100,=G:\_Programming\NB Emulator\Emulation\Delphi\Unit1.pas</Transaction>
     <Transaction>2016/11/10 10:41:59.000.237,G:\_Programming\NB Emulator\Emulation\Delphi\Unit1.pas=G:\_Programming\NB Emulator\Emulation\Delphi\uUpdate.pas</Transaction>

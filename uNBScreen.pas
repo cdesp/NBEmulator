@@ -32,7 +32,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 unit uNBScreen;
 
 interface
-Uses uNBTypes,DXDraws,uNBStream,graphics,classes;
+Uses uNBTypes,uNBStream,graphics,classes,DXDraws;
 
 Const ScreenYOffset=2;
       ScreenXOffset=2;

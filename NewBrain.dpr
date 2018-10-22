@@ -65,13 +65,13 @@ begin
   Application.Initialize;
   Application.Title := 'NewBrain Emulator';
   Application.CreateForm(TfNewBrain, fNewBrain);
+  Application.CreateForm(TfDrvInfo, fDrvInfo);
   Application.CreateForm(TdmCommd, dmCommd);
   Application.CreateForm(TfrmProgress, frmProgress);
   Application.CreateForm(TNewDebug, NewDebug);
   Application.CreateForm(TfTapeMgmt, fTapeMgmt);
   Application.CreateForm(TfDiskMgmt, fDiskMgmt);
   Application.CreateForm(Tfoptions, foptions);
-  Application.CreateForm(TfDrvInfo, fDrvInfo);
   Application.CreateForm(TfrmPerif, frmPerif);
   Application.CreateForm(Tfsplash, fsplash);
   Application.CreateForm(TfrmUpdate, frmUpdate);

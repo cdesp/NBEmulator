@@ -38,9 +38,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  raze, StdCtrls,  Menus, AppEvnts, DXDraws, DXClass, ExtCtrls,
+  raze, StdCtrls,  Menus, AppEvnts, ExtCtrls,
    ComCtrls,  JDLed,uNBTypes, Vcl.ToolWin, Vcl.ImgList, System.Actions,
   Vcl.ActnList, Vcl.Imaging.jpeg, Vcl.Imaging.pngimage{, JvRegAuto}
+  , DXDraws,  System.ImageList, DXClass
   ;
 {$i 'dsp.inc'}
 type
@@ -1505,14 +1506,14 @@ end;
 
 procedure TfNewBrain.FormResize(Sender: TObject);
 begin
-  if fDrvInfo.Visible then
+  if assigned(fDrvInfo) and fDrvInfo.Visible then
    fDrvInfo.DoResize1;
 end;
 
 procedure TfNewBrain.FormCanResize(Sender: TObject; var NewWidth,
   NewHeight: Integer; var Resize: Boolean);
 begin
-  if fDrvInfo.Visible then
+  if assigned(fDrvInfo) and fDrvInfo.Visible then
    fDrvInfo.DoResize1;
 end;
 

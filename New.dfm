@@ -4,7 +4,7 @@ object fNewBrain: TfNewBrain
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'NEWBRAIN Pro By Despsoft'
-  ClientHeight = 631
+  ClientHeight = 591
   ClientWidth = 668
   Color = 764381
   Font.Charset = DEFAULT_CHARSET
@@ -175,7 +175,7 @@ object fNewBrain: TfNewBrain
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 612
+    Top = 572
     Width = 668
     Height = 19
     Panels = <
@@ -198,8 +198,6 @@ object fNewBrain: TfNewBrain
         Width = 50
       end>
     SizeGrip = False
-    ExplicitTop = 589
-    ExplicitWidth = 643
   end
   object Panel4: TPanel
     Left = 0
@@ -209,7 +207,6 @@ object fNewBrain: TfNewBrain
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 643
     object Panel3: TPanel
       Left = 251
       Top = 40
@@ -219,10 +216,6 @@ object fNewBrain: TfNewBrain
       BevelOuter = bvNone
       Caption = 'Panel3'
       TabOrder = 0
-      ExplicitLeft = 1
-      ExplicitTop = -53
-      ExplicitWidth = 641
-      ExplicitHeight = 94
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -233,10 +226,6 @@ object fNewBrain: TfNewBrain
         Color = 64
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 2
-        ExplicitTop = 58
-        ExplicitWidth = 641
-        ExplicitHeight = 36
         object LedDisp: TJDLed
           Left = 20
           Top = 9
@@ -261,9 +250,6 @@ object fNewBrain: TfNewBrain
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 41
-      ExplicitHeight = 47
       object Image1: TImage
         Left = 0
         Top = 0
@@ -336,9 +322,6 @@ object fNewBrain: TfNewBrain
       Height = 40
       Align = alTop
       TabOrder = 2
-      ExplicitLeft = 2
-      ExplicitTop = 9
-      ExplicitWidth = 641
       object ToolBar1: TToolBar
         Left = 1
         Top = 1
@@ -353,7 +336,6 @@ object fNewBrain: TfNewBrain
         ParentShowHint = False
         ShowHint = True
         TabOrder = 0
-        ExplicitWidth = 639
         object ToolButton1: TToolButton
           Left = 0
           Top = 0
@@ -413,14 +395,10 @@ object fNewBrain: TfNewBrain
     Left = 0
     Top = 83
     Width = 668
-    Height = 529
+    Height = 489
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitLeft = 232
-    ExplicitTop = 312
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object newscr: TDXDraw
       Left = 14
       Top = 12
@@ -766,7 +744,7 @@ object fNewBrain: TfNewBrain
     Left = 240
     Top = 112
     Bitmap = {
-      494C0101070008008C0020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010107000800940020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
